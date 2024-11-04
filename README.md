@@ -56,7 +56,7 @@ The tool generates two types of output when `display_continued_fraction()` is ca
 All output is rendered using LaTeX in Jupyter Notebook environments.
 
 ## Example
- - Can be found at `sample.py`
+ - Can be found at `sample.ipynb`
 
 ## Dependencies
 
