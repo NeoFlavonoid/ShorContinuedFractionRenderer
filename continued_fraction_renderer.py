@@ -55,36 +55,6 @@ class ContinuedFractionRenderer:
         fraction = Rational(self.numerator, self.denominator)  # Convert to a rational number
         self.continued_fraction = list(continued_fraction_iterator(fraction))  # Get continued fraction representation
 
-    def continued_fraction_to_latex(self):
-        """
-        Converts the computed continued fraction into a LaTeX-rendered string,
-        including the numerator, denominator, and cumulative sums.
-        
-        Returns:
-        - LaTeX string rendering the continued fraction
-        """
-        if not self.continued_fraction:
-            return ""
-
-        # Start with the innermost fraction (last element in the list)
-        latex_code = str(self.continued_fraction[-1])
-        
-        # List to hold sums
-        cumulative_sum = 0
-        # Build the continued fraction from innermost to outermost
-        for i, value in enumerate(reversed(self.continued_fraction)):
-            if i == 0:  # For the last element
-                cumulative_sum += value
-            else:
-                # Compute the next level cumulative sum
-                cumulative_sum = value + 1 / cumulative_sum
-            self.cumulative_sums.append(cumulative_sum)
-            latex_code = r"{} + \cfrac{{1}}{{{}}}".format(value, latex_code)
-
-        # Reverse the cumulative sums to match the LaTeX output order
-        self.cumulative_sums.reverse()
-        return (r"\text{Continued fraction for } \frac{" + str(self.numerator) + r"}{" + str(self.denominator) + r"} = " + latex_code)
-
     def display_continued_fraction(self):
         """
         Computes and displays the continued fraction in LaTeX format in Jupyter Notebook.
@@ -100,7 +70,6 @@ class ContinuedFractionRenderer:
         self.numerator = numerator
         self.denominator = denominator
         self.continued_fraction = []
-        self.cumulative_sums = []  # List to hold cumulative sums
 
     def compute_continued_fraction(self):
         """
@@ -126,20 +95,12 @@ class ContinuedFractionRenderer:
 
         # Start with the innermost fraction (last element in the list)
         latex_code = str(self.continued_fraction[-1])
-        cumulative_sum = self.continued_fraction[0]
-        self.cumulative_sums.append(cumulative_sum)
-
         # Build the continued fraction from innermost to outermost
         for value in reversed(self.continued_fraction[:-1]):
             # Calculate the next cumulative sum
             latex_code = r"{} + \cfrac{{1}}{{{}}}".format(value, latex_code)
         # print(self.continued_fraction)
         self.continued_fraction_convergents(self.continued_fraction)
-        self.cumulative_sums.reverse()
-
-        # Create LaTeX output including cumulative sums
-        sum_latex = " , ".join(f"S_{i} = {self.cumulative_sums[i]:.4f}" for i in range(len(self.cumulative_sums)))
-        
         return (r"\text{Continued fraction for } \frac{" + str(self.numerator) + r"}{" + str(self.denominator) + r"} = " + latex_code)
 
     def display_continued_fraction(self):
