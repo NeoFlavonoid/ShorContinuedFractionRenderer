@@ -1,6 +1,13 @@
-# Continued Fraction Renderer
+# Continued Fraction Renderer for Shor's Algorithm
 
-A Python tool for computing and visualizing continued fraction expansions of rational numbers, including their convergents and step-by-step calculations.
+A specialized Python tool for analyzing the period-finding component of Shor's algorithm using continued fraction expansion. This tool helps find the period r from quantum measurement outcomes by analyzing probability peaks.
+
+## Purpose
+
+In Shor's algorithm, after quantum measurement, we need to:
+ - Find peaks in the probability distribution
+ - Convert these peaks (matching indices) into rational approximations to find the period r
+ - Use continued fractions to find the best approximation with small denominators
 
 ## Installation
 
@@ -20,31 +27,7 @@ pip install ipython
 
 ## Usage
 
-### Basic Usage
-
-```python
-from continued_fraction_renderer import ContinuedFractionRenderer
-
-# Create a renderer instance with numerator and denominator
-# Example: Represent 355/113 as a continued fraction
-renderer = ContinuedFractionRenderer(355, 113)
-renderer.display_continued_fraction()
-```
-
-### Using with Power-of-Two Denominators
-
-The method you highlighted:
-```python
-a = ContinuedFractionRenderer(numerator, 2**17)
-a.display_continued_fraction()
-```
-
-This specific usage creates a continued fraction representation where the denominator is 2¹⁷ (131,072). This is particularly useful when:
-1. Analyzing rational approximations of numbers in binary computations
-2. Finding convergents for numbers that need to be represented with fixed-point binary arithmetic
-3. Studying how well a number can be approximated by fractions with power-of-two denominators
-
-The power of 2 denominator is often used in computer science and digital signal processing where binary fractions are important.
+ - Can be found at `sample.ipynb`
 
 ## Output Format
 
@@ -55,9 +38,6 @@ The tool generates two types of output when `display_continued_fraction()` is ca
 
 All output is rendered using LaTeX in Jupyter Notebook environments.
 ![sample](https://github.com/user-attachments/assets/602e9150-8102-429b-98f5-ca5cdd0b37b7)
-
-## Example
- - Can be found at `sample.ipynb`
 
 ## Dependencies
 
