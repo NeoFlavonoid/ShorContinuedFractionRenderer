@@ -54,6 +54,7 @@ The tool generates two types of output when `display_continued_fraction()` is ca
 2. The sequence of convergents (rational number approximations)
 
 All output is rendered using LaTeX in Jupyter Notebook environments.
+![sample](https://github.com/user-attachments/assets/602e9150-8102-429b-98f5-ca5cdd0b37b7)
 
 ## Example
  - Can be found at `sample.ipynb`
