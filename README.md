@@ -31,10 +31,9 @@ pip install ipython
 
 ## Output Format
 
-The tool generates two types of output when `display_continued_fraction()` is called:
-
-1. The continued fraction representation in a nested fraction format
-2. The sequence of convergents (rational number approximations)
+ - The compute() method of ContinuedFractionRenderer calculates both the continued fraction and the convergents.
+ - The display_continued_fraction() method is used to render the continued fraction in LaTeX format.
+ - The display_convergents() method is used to render the sequence of convergents in LaTeX format.
 
 All output is rendered using LaTeX in Jupyter Notebook environments.
 ![sample](https://github.com/user-attachments/assets/602e9150-8102-429b-98f5-ca5cdd0b37b7)
